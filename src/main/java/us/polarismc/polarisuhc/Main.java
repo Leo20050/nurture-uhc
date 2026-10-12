@@ -37,12 +37,16 @@ public class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
+        saveDefaultConfig();
+        reloadConfig();
         utils = new Utils(this, "<dark_green><b>UHC</b></dark_green> <dark_gray>»</dark_gray> <reset>");
         start = new StartThings(this);
         statistics = new StatisticsManager(this);
         arena = new ArenaManager(this);
 
-        getCommand("config").setExecutor(new ConfigCommand());
+        if (getCommand("config") != null) {
+            getCommand("config").setExecutor(new ConfigCommand(this));
+        }
     }
 
     @Override
