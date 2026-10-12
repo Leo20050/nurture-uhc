@@ -2,6 +2,7 @@ package us.polarismc.polarisuhc;
 
 import lombok.Getter;
 import org.bukkit.plugin.java.JavaPlugin;
+import us.polarismc.polarisuhc.commands.ConfigCommand;
 import us.polarismc.polarisuhc.managers.arena.ArenaManager;
 import us.polarismc.polarisuhc.managers.channel.ChannelManager;
 import us.polarismc.polarisuhc.managers.game.GameFlowManager;
@@ -40,6 +41,8 @@ public class Main extends JavaPlugin {
         start = new StartThings(this);
         statistics = new StatisticsManager(this);
         arena = new ArenaManager(this);
+
+        getCommand("config").setExecutor(new ConfigCommand());
     }
 
     @Override
@@ -48,7 +51,7 @@ public class Main extends JavaPlugin {
             start.disable();
         }
         if (arena != null) {
-            arena.cleanup(); // Ensure arena is cleaned up on disable
+            arena.cleanup();
         }
     }
 }
