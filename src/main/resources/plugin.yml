@@ -12,6 +12,9 @@ softdepend:
   - WorldEdit
 
 commands:
+  config:
+    description: Opens the UHC configuration GUI
+    usage: /config
   debug:
     description: Command used for debug info
     permission: uhc.dev
